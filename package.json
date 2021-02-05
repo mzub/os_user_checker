@@ -1,0 +1,21 @@
+{
+  "name": "os_user_checker",
+  "version": "1.0.0",
+  "description": "Checks if user is present is OS",
+  "main": "server.js",
+  "gypfile": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node-gyp rebuild",
+    "clean": "node-gyp clean"
+  },
+  "author": "mzub",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-addon-api": "^3.1.0"
+  },
+  "devDependencies": {
+    "node-gyp": "^7.1.2"
+  }
+}

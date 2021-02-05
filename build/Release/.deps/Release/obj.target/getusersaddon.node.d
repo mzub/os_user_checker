@@ -1,0 +1,1 @@
+cmd_Release/obj.target/getusersaddon.node := g++ -o Release/obj.target/getusersaddon.node -shared -pthread -rdynamic -m64  -Wl,-soname=getusersaddon.node -Wl,--start-group Release/obj.target/getusersaddon/cppsrc/main.o Release/obj.target/getusersaddon/cppsrc/windows_users.o Release/obj.target/node_modules/node-addon-api/nothing.a -Wl,--end-group 
