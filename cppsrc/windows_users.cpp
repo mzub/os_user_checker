@@ -19,7 +19,6 @@ std::vector<std::wstring> windows_users::getUsers(){
 	DWORD dwEntriesRead = 0;
 	DWORD dwTotalEntries = 0;
 	DWORD dwResumeHandle = 0;
-	DWORD i;
 	NET_API_STATUS nStatus;
 	LPTSTR pszServerName = NULL;
 	vector<wstring> usersList;
