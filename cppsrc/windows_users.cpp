@@ -2,7 +2,7 @@
 #define UNICODE
 #endif
 #pragma comment(lib, "netapi32.lib")
-
+using namespace std;
 #include "windows_users.h"
 #include <vector>
 #include <stdio.h>
@@ -13,7 +13,7 @@
 
 //std::vector<std::string> v = {"One", "Two", "Three"};
 
-std::vector<std::string> windows_users::getUsers(){
+std::vector<std::wstring> windows_users::getUsers(){
 	LPUSER_INFO_0 pBuf = NULL;
 	LPUSER_INFO_0 pTmpBuf;
 	DWORD dwLevel = 0;
@@ -24,7 +24,7 @@ std::vector<std::string> windows_users::getUsers(){
 	DWORD i;
 	NET_API_STATUS nStatus;
 	LPTSTR pszServerName = NULL;
-	std:vector<std::strng> usersList;
+	vector<wstring> usersList;
 
 	do // begin do
 	{
@@ -72,8 +72,9 @@ Napi::Array windows_users::GetUsersWrapped(const Napi::CallbackInfo& info) {
 	Napi::Env env = info.Env();
 	Napi::Array returnedArray = Napi::Array::New(env);
 	int i = 0;
-	for(auto x: getUsers()){ 
-		returnedArray.Set(uint32_t(i), x); 
+	for(auto x: getUsers()){
+		string str = std::string(x.begin(), x.end());		 
+		returnedArray.Set(uint32_t(i), str); 
 		i++;
 	} 
 

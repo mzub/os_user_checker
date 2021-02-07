@@ -3,7 +3,7 @@
 
 namespace windows_users {
 
-    std::vector<std::string> getUsers();
+    std::vector<std::wstring> getUsers();
 
     Napi::Array GetUsersWrapped(const Napi::CallbackInfo& info);
 
