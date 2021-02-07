@@ -11,8 +11,6 @@ using namespace std;
 #include <lm.h>
 
 
-//std::vector<std::string> v = {"One", "Two", "Three"};
-
 std::vector<std::wstring> windows_users::getUsers(){
 	LPUSER_INFO_0 pBuf = NULL;
 	LPUSER_INFO_0 pTmpBuf;
@@ -29,23 +27,23 @@ std::vector<std::wstring> windows_users::getUsers(){
 	do // begin do
 	{
 		nStatus = NetUserEnum((LPCWSTR) pszServerName,
-			dwLevel,
-			FILTER_NORMAL_ACCOUNT, // global users
-	        (LPBYTE*)&pBuf,
-	        dwPrefMaxLen,
-	        &dwEntriesRead,
-	        &dwTotalEntries,
-	        &dwResumeHandle);
-	                                                                                                                      if ((nStatus == NERR_Success) || (nStatus == ERROR_MORE_DATA))
-	    {
-	    	if ((pTmpBuf = pBuf) != NULL)
-	        {
+				dwLevel,
+				FILTER_NORMAL_ACCOUNT, // global users
+				(LPBYTE*)&pBuf,
+				dwPrefMaxLen,
+				&dwEntriesRead,
+				&dwTotalEntries,
+				&dwResumeHandle);
+		if ((nStatus == NERR_Success) || (nStatus == ERROR_MORE_DATA))
+		{
+			if ((pTmpBuf = pBuf) != NULL)
+			{
 				for (i = 0; (i < dwEntriesRead); i++)
 				{
 					assert(pTmpBuf != NULL);
 					if (pTmpBuf == NULL)
 					{
-					    fprintf(stderr, "An access violation has occurred\n");
+						fprintf(stderr, "An access violation has occurred\n");
 						break;
 					}
 					usersList.push_back(pTmpBuf->usri0_name);
