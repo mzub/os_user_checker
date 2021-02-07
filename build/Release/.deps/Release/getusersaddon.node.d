@@ -1,1 +1,0 @@
-cmd_Release/getusersaddon.node := ln -f "Release/obj.target/getusersaddon.node" "Release/getusersaddon.node" 2>/dev/null || (rm -rf "Release/getusersaddon.node" && cp -af "Release/obj.target/getusersaddon.node" "Release/getusersaddon.node")
