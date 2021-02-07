@@ -9,19 +9,19 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
 
-console.log('=====>', addon);
-console.log(addon.getUsers());
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname,'/form.html'))
+  res.sendFile(path.join(__dirname,'/html/form.html'))
 })
 
 app.post('/form', (req, res) => {
-  console.log(req.body)
-  res.send(req.body.fname) 
+  if (addon.getUsers().find((userName)=> userName == req.body.username)) {
+    res.sendFile(path.join(__dirname,'/html/searchsuccess.html'))
+  } else {
+    res.sendFile(path.join(__dirname,'/html/usernotfound.html'))
+  } 
 })
 
 module.exports=addon;
