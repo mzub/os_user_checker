@@ -1,9 +1,11 @@
 #include <napi.h>
+#include <vector>
 
 namespace windows_users {
 
-    std::string getUsers();
-    Napi::String GetUsersWrapped(const Napi::CallbackInfo& info);
+    std::vector<std::string> getUsers();
+
+    Napi::Array GetUsersWrapped(const Napi::CallbackInfo& info);
 
     Napi::Object Init(Napi::Env env, Napi::Object exports);
     

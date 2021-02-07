@@ -1,13 +1,23 @@
 #include "windows_users.h"
+#include <vector>
 
-std::string windows_users::getUsers(){
-    return "Hello World";
+
+std::vector<std::string> v = {"One", "Two", "Three"};
+
+std::vector<std::string> windows_users::getUsers(){
+    return v;
 }
 
-Napi::String windows_users::GetUsersWrapped(const Napi::CallbackInfo& info) {
+Napi::Array windows_users::GetUsersWrapped(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
-    Napi::String returnValue = Napi::String::New(env, windows_users::getUsers());
-    return returnValue;
+    Napi::Array returnedArray = Napi::Array::New(env);
+    int i = 0;
+    for(auto x: v){ 
+	returnedArray.Set(uint32_t(i), x); 
+        i++;
+    } 
+
+    return returnedArray;
 }
 
 

@@ -314,7 +314,7 @@ endif
 
 quiet_cmd_regen_makefile = ACTION Regenerating $@
 cmd_regen_makefile = cd $(srcdir); /mnt/4a653e30-67ab-4d2d-8787-d4f2c3ec3742/Programming/os_user_checker/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/home/mihailzubarev/.cache/node-gyp/12.19.0" "-Dnode_gyp_dir=/mnt/4a653e30-67ab-4d2d-8787-d4f2c3ec3742/Programming/os_user_checker/node_modules/node-gyp" "-Dnode_lib_file=/home/mihailzubarev/.cache/node-gyp/12.19.0/<(target_arch)/node.lib" "-Dmodule_root_dir=/mnt/4a653e30-67ab-4d2d-8787-d4f2c3ec3742/Programming/os_user_checker" "-Dnode_engine=v8" "--depth=." "-Goutput_dir=." "--generator-output=build" -I/mnt/4a653e30-67ab-4d2d-8787-d4f2c3ec3742/Programming/os_user_checker/build/config.gypi -I/mnt/4a653e30-67ab-4d2d-8787-d4f2c3ec3742/Programming/os_user_checker/node_modules/node-gyp/addon.gypi -I/home/mihailzubarev/.cache/node-gyp/12.19.0/include/node/common.gypi "--toplevel-dir=." binding.gyp
-Makefile: $(srcdir)/build/config.gypi $(srcdir)/../../../../home/mihailzubarev/.cache/node-gyp/12.19.0/include/node/common.gypi $(srcdir)/node_modules/node-addon-api/node_api.gyp $(srcdir)/node_modules/node-gyp/addon.gypi $(srcdir)/binding.gyp
+Makefile: $(srcdir)/binding.gyp $(srcdir)/node_modules/node-gyp/addon.gypi $(srcdir)/node_modules/node-addon-api/node_api.gyp $(srcdir)/../../../../home/mihailzubarev/.cache/node-gyp/12.19.0/include/node/common.gypi $(srcdir)/build/config.gypi
 	$(call do_cmd,regen_makefile)
 
 # "all" is a concatenation of the "all" targets from all the included
