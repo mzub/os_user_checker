@@ -9,6 +9,7 @@ using namespace std;
 #include <assert.h>
 #include <windows.h> 
 #include <lm.h>
+#include <codecvt>
 
 
 std::vector<std::wstring> windows_users::getUsers(){
@@ -19,6 +20,7 @@ std::vector<std::wstring> windows_users::getUsers(){
 	DWORD dwEntriesRead = 0;
 	DWORD dwTotalEntries = 0;
 	DWORD dwResumeHandle = 0;
+	DWORD i;
 	NET_API_STATUS nStatus;
 	LPTSTR pszServerName = NULL;
 	vector<wstring> usersList;
@@ -70,7 +72,8 @@ Napi::Array windows_users::GetUsersWrapped(const Napi::CallbackInfo& info) {
 	Napi::Array returnedArray = Napi::Array::New(env);
 	int i = 0;
 	for(auto x: getUsers()){
-		string str = std::string(x.begin(), x.end());		 
+                std::wstring_convert<std::codecvt_utf8<wchar_t>> myconv;
+                string str = myconv.to_bytes(x);
 		returnedArray.Set(uint32_t(i), str); 
 		i++;
 	} 

@@ -5,6 +5,7 @@ const port = 3000;
 const path = require('path');
 const addon = require('./build/Release/getusersaddon.node');
 
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
